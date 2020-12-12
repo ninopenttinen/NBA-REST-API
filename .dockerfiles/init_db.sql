@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Teams (
 CREATE TABLE IF NOT EXISTS Players (
     player_id   SERIAL PRIMARY KEY,
     team_id     VARCHAR(20) 
-                REFERENCES Teams (team_id),
+                REFERENCES Teams (team_id) NOT NULL,
     name        VARCHAR(50) NOT NULL,
     born        DATE NOT NULL,
     height      DECIMAL(5,2) NOT NULL
@@ -17,9 +17,9 @@ CREATE TABLE IF NOT EXISTS Players (
 CREATE TABLE IF NOT EXISTS Games (
     game_id          VARCHAR(20) PRIMARY KEY,
     home_team_id     VARCHAR(20)
-                     REFERENCES Teams (team_id),
+                     REFERENCES Teams (team_id) NOT NULL,
     guest_team_id    VARCHAR(20)
-                     REFERENCES Teams (team_id),
+                     REFERENCES Teams (team_id) NOT NULL,
     home_team_score  SMALLINT NOT NULL,
     guest_team_score SMALLINT NOT NULL,
     date             DATE
@@ -28,9 +28,9 @@ CREATE TABLE IF NOT EXISTS Games (
 CREATE TABLE IF NOT EXISTS Results (
     result_id   SERIAL PRIMARY KEY,
     game_id     VARCHAR(20)
-                REFERENCES Games (game_id),
+                REFERENCES Games (game_id) NOT NULL,
     player_id   INT
-                REFERENCES Players (player_id),
+                REFERENCES Players (player_id) NOT NULL,
     points      SMALLINT NOT NULL,
     rebounds    SMALLINT NOT NULL,
     assists     SMALLINT NOT NULL

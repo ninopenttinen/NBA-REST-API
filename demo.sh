@@ -78,7 +78,7 @@ curl -i -X POST \
 -d '{ "team_id": "POR_2019_2020", "name": "Portland Trail Blazers", "wins": "0", "losses": "0" }' \
 "http://localhost:9000/api/v1/teams"
 
-echo; echo " ----------- Muokataan joukkuetta:"
+echo; echo " ----------- Muokataan joukkueen 'wins' ja 'losses' attribuutteja:"
 curl -i -X PUT \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "wins": "35", "losses": "39" }' \
@@ -92,6 +92,11 @@ curl -i -X GET \
 echo; echo " ----------- Poistetaan joukkue:"
 curl -i -X DELETE "http://localhost:9000/api/v1/teams/POR_2019_2020"
 
+echo; echo " ----------- Lisätäänkin joukkue vielä takaisin että saadaan lisättyä sinne kohta pelaaja:"
+curl -i -X POST \
+-H "Content-Type: application/json;charset=UTF-8" \
+-d '{ "team_id": "POR_2019_2020", "name": "Portland Trail Blazers", "wins": "35", "losses": "39" }' \
+"http://localhost:9000/api/v1/teams"
 
 
 echo; echo " ----------- Haetaan kaikki pelaajat:"
@@ -99,13 +104,18 @@ curl -i -X GET \
 -H "Content-Type: application/json;charset=UTF-8" \
 "http://localhost:9000/api/v1/players"
 
+echo; echo " ----------- Haetaan kaikki Los Angeles Lakersin pelaajat:"
+curl -i -X GET \
+-H "Content-Type: application/json;charset=UTF-8" \
+"http://localhost:9000/api/v1/teams/LAL_2019_2020/players"
+
 echo; echo " ----------- Lisätään pelaaja:"
 curl -i -X POST \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "team_id": "POR_2019_2020", "name": "Damian Lillard", "born": "1990-07-15", "height": "1.88" }' \
 "http://localhost:9000/api/v1/players"
 
-echo; echo " ----------- Muokataan pelaajaa:"
+echo; echo " ----------- Muokataan pelaajan tietoja (vaihdetaan joukkuetta):"
 curl -i -X PUT \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "team_id": "MIA_2019_2020" }' \
@@ -119,17 +129,17 @@ curl -i -X GET \
 echo; echo " ----------- Poistetaan juuri lisätty pelaaja:"
 curl -i -X DELETE "http://localhost:9000/api/v1/players/11"
 
-echo; echo " ----------- Haetaan kaikki Los Angeles Lakersin pelaajat:"
-curl -i -X GET \
--H "Content-Type: application/json;charset=UTF-8" \
-"http://localhost:9000/api/v1/teams/LAL_2019_2020/players"
-
 
 
 echo; echo " ----------- Haetaan kaikki pelit:"
 curl -i -X GET \
 -H "Content-Type: application/json;charset=UTF-8" \
 "http://localhost:9000/api/v1/games"
+
+echo; echo " ----------- Haetaan vain kaikki Los Angeles Lakersin pelaamat pelit:"
+curl -i -X GET \
+-H "Content-Type: application/json;charset=UTF-8" \
+"http://localhost:9000/api/v1/teams/LAL_2019_2020/games"
 
 echo; echo " ----------- Lisätään peli:"
 curl -i -X POST \
@@ -151,11 +161,11 @@ curl -i -X GET \
 echo; echo " ----------- Poistetaan juuri lisätty peli:"
 curl -i -X DELETE "http://localhost:9000/api/v1/games/MIAvsLAL_07102020"
 
-echo; echo " ----------- Haetaan vain kaikki Los Angeles Lakersin pelaamat pelit:"
-curl -i -X GET \
+echo; echo " ----------- Ja lisätään taas peli uudestaan että saadaan kohta lisättyä kyseiseen peliin liittyvä tulos:"
+curl -i -X POST \
 -H "Content-Type: application/json;charset=UTF-8" \
-"http://localhost:9000/api/v1/teams/LAL_2019_2020/games"
-
+-d '{ "game_id": "MIAvsLAL_07102020", "home_team_id": "MIA_2019_2020", "guest_team_id": "LAL_2019_2020", "home_team_score": "96", "guest_team_score": "102", "date": "2020-10-07" }' \
+"http://localhost:9000/api/v1/games"
 
 
 echo; echo " ----------- Haetaan kaikkien pelaajien tulokset kaikissa peleissä:"
@@ -163,13 +173,23 @@ curl -i -X GET \
 -H "Content-Type: application/json;charset=UTF-8" \
 "http://localhost:9000/api/v1/results"
 
-echo; echo " ----------- Lisätään tulos"
+echo; echo " ----------- Haetaan kaikkien Jimmy Butlerin pelaamien pelien tulokset:"
+curl -i -X GET \
+-H "Content-Type: application/json;charset=UTF-8" \
+"http://localhost:9000/api/v1/players/6/results"
+
+echo; echo " ----------- Haetaan yhden pelin (Los Angeles Lakers vs Miami Heat 10.10.2020) kaikki tulokset:"
+curl -i -X GET \
+-H "Content-Type: application/json;charset=UTF-8" \
+"http://localhost:9000/api/v1/games/LALvsMIA_10102020/results"
+
+echo; echo " ----------- Lisätään yhden pelaajan tulos"
 curl -i -X POST \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "game_id": "MIAvsLAL_07102020", "player_id": "6", "points": "0", "rebounds": "0", "assists": "0" }' \
 "http://localhost:9000/api/v1/results"
 
-echo; echo " ----------- Muokataan tulosta:"
+echo; echo " ----------- Muokataan tuloksen 'points', 'rebounds' ja 'assists' attribuutteja:"
 curl -i -X PUT \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "points": "22", "rebounds": "10", "assists":"9" }' \
@@ -182,16 +202,6 @@ curl -i -X GET \
 
 echo; echo " ----------- Poistetaan juuri lisätty tulos:"
 curl -i -X DELETE "http://localhost:9000/api/v1/games/results/21"
-
-echo; echo " ----------- Haetaan kaikkien Jimmy Butlerin pelaamien pelien tulokset:"
-curl -i -X GET \
--H "Content-Type: application/json;charset=UTF-8" \
-"http://localhost:9000/api/v1/players/6/results"
-
-echo; echo " ----------- Haetaan yhden pelin (Los Angeles Lakers vs Miami Heat 10.10.2020) kaikki tulokset:"
-curl -i -X GET \
--H "Content-Type: application/json;charset=UTF-8" \
-"http://localhost:9000/api/v1/games/LALvsMIA_10102020/results"
 
 
 
