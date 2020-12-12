@@ -14,8 +14,6 @@ services:
             - custom-bridge
         ports:
             - "9000:9000"
-        volumes: 
-            - ./backend:/opt/app
 
     #backend_test:
     #    build: 
@@ -63,9 +61,6 @@ services:
             #    condition: service_healthy
         networks:
             - custom-bridge
-
-volumes:
-    backend:
 
 networks:
     custom-bridge:
