@@ -1,5 +1,3 @@
-docker-compose up --build --remove-orphans
-
 Perustiedot:
 Käytetään tietokantana supistettua versiota mallinnusharjoitustyössä tehdystä NBA:n statistiikka ja tulospalvelusta. Kanta sisältää neljä toisiinsa linkitettyä taulua:
 
