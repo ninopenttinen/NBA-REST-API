@@ -62,9 +62,9 @@ git clone https://github.com/ninopenttinen/NBA-REST-API
 cd NBA-REST-API
 pwd
 
-echo; echo " ----------- Asennetaan sovellus ja käynnistetään palvelin"
+echo; echo " ----------- Asennetaan sovellus"
 docker-compose up -d --build --remove-orphans
-echo; echo " ----------- Odotetaan 60s että kontit saadaan ajoon. Mikäli ohjelma ei vielä tämän jälkeen toimi, muokkaa aikaa ja kokeile uudestaan"
+echo; echo " ----------- Odotetaan 60s että kontit saadaan ajoon"
 sleep 60s
 
 echo; echo " ----------- Haetaan kaikki joukkueet:"
