@@ -51,37 +51,6 @@ Results
 /api/v1/games/:id/results   - tietyn pelin kaikki tulokset
 
 
-
-
-ESITTELYSSÄ KÄYTETTÄVÄT METODIT:
-Luo joukkueet (2kpl)
-Luo pelaajat
-Luo pelit
-Luo tulokset
-
-Hae pelaajat
-Hae pelaajat sortattuna esim pituuden perusteella
-Hae tietty pelaaja
-Hae Joukkueet
-Hae tietty joukkue
-?Hae kaikki joukkueen pelaajat
-Hae Pelit
-Hae tietty peli
-Hae kaikkien pelaajien kaikki tulokset
-Hae tietyn pelaajan kaikki tulokset
-Hae tietyn pelaajan tietyn pelin tulokset
-
-Päivitä pelaajan ikä
-Päivitä joukkueen voitto/häviö lukua
-Päivitä pelin joukkueiden pistesaldoja
-Päivitä pelaajan pelin tuloksia (esim pistesaldoa)
-
-Poista pelaaja
-Poista joukkue
-Poista peli
-Poista jonkun pelaajan jonkun pelin tulokset
-
-
 JOUKKUEILLE:
 
 Lisää joukkue:
