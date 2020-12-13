@@ -51,6 +51,9 @@ Results
 /api/v1/games/:id/results   - tietyn pelin kaikki tulokset  
 
 
+![alt text](https://github.com/ninopenttinen/NBA-REST-API/blob/main/Entity relations.png?raw=true)
+
+
 JOUKKUEILLE:  
 
 Lisää joukkue:  
