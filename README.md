@@ -49,11 +49,11 @@ Results
 /api/v1/results/:id         - tietyn pelin tulokset  
 /api/v1/players/:id/results - tietyn pelaajan kaikki tulokset  
 /api/v1/games/:id/results   - tietyn pelin kaikki tulokset  
-
-
+  
+  
 ![alt text](https://github.com/ninopenttinen/NBA-REST-API/blob/main/Entity%20relations.png?raw=true)
-
-
+  
+  
 JOUKKUEILLE:  
 
 Lisää joukkue:  
