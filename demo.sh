@@ -3,7 +3,7 @@
 # - Tuni-mail: nino.penttinen@tuni.fi
 # - Kuvaus: Käytetään tietokantana supistettua versiota mallinnus-
 #           harjoitustyössä tehdystä NBA:n statistiikka ja tulos-
-#           palvelusta. (lisätietoja README:ssa)
+#           palvelusta. (lisätietoja Githubin README:ssa)
 # - Tekninen toteutus: Node.js backend ja PostgreSQL tietokanta joita
 #                      ajetaan omissa Docker konteissaan.
 #
@@ -50,10 +50,10 @@
 # - Aja tämä demo (huom. scripti ei sulje tai poista kontteja ajon
 #   jälkeen, tämä täytyy tehdä itse ajamalla komento 
 #   "docker-compose down" projektin juuressa)
-# - Mikäli demo ei lähtenyt toimimaan, ei Docker todennäköisesti
-#   ehtinyt rakentamaan ja käynnistämään kaikkia kontteja ajoissa.
-#   Tässä tapauksessa kannattaa muokata scriptistä sleep aikaa 
-#   pidemmäksi ja kokeilla uudestaan.
+# - HUOM. JOS DEMOA HALUAA KOKEILLA UUDESTAAN (ja haluaa että kaikki
+#   toimii niin kuin ensimmäisellä kerralla), TÄYTYY POISTAA DOCKERIN
+#   AUTOMAATTISESTI LUOMAT VOLYYMIT! Tämän voi tehdä ajamalla
+#   komennon "docker-compose down --volumes"
 #
 # =============================================
 
