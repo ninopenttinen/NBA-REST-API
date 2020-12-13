@@ -67,6 +67,8 @@ docker-compose up -d --build --remove-orphans
 echo; echo " ----------- Odotetaan 60s että kontit saadaan ajoon"
 sleep 60s
 
+
+
 echo; echo " ----------- Haetaan kaikki joukkueet:"
 curl -i -X GET \
 -H "Content-Type: application/json;charset=UTF-8" \
@@ -97,6 +99,7 @@ curl -i -X POST \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "team_id": "POR_2019_2020", "name": "Portland Trail Blazers", "wins": "35", "losses": "39" }' \
 "http://localhost:9000/api/v1/teams"
+
 
 
 echo; echo " ----------- Haetaan kaikki pelaajat:"
@@ -166,6 +169,7 @@ curl -i -X POST \
 -H "Content-Type: application/json;charset=UTF-8" \
 -d '{ "game_id": "MIAvsLAL_07102020", "home_team_id": "MIA_2019_2020", "guest_team_id": "LAL_2019_2020", "home_team_score": "96", "guest_team_score": "102", "date": "2020-10-07" }' \
 "http://localhost:9000/api/v1/games"
+
 
 
 echo; echo " ----------- Haetaan kaikkien pelaajien tulokset kaikissa peleissä:"
